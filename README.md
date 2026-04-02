@@ -15,6 +15,16 @@ It enables **on-device computation**, **stateful reasoning**, and **federated co
 
 ---
 
+## Documentation
+
+For deep dives into system mechanics, underlying theory, and deployment constraints, refer to the official documentation:
+
+* [System Architecture](docs/architecture.md) — Detailed breakdown of the execution pipeline and constraints.
+* [Scientific Foundations](docs/scientific_foundations.md) — The biological and computational theory driving the system (SBC, Graph Theory, FILA).
+* [Disclaimers](docs/disclaimers.md) — Crucial legal, medical, and operational boundaries.
+
+---
+
 ## Core Principles
 
 * **Edge-First** — All core computation runs locally
@@ -25,24 +35,26 @@ It enables **on-device computation**, **stateful reasoning**, and **federated co
 
 ---
 
-## System Architecture
+## Meta-Execution Pipeline
 
-```
+*Note: While data traverses the system via a directed execution graph, the engine processes each node using the following deterministic pipeline:*
+
+```text
 Input Signal
      ↓
-Signal Classification (STEP 9)
+Signal Classification
      ↓
-Context Builder
+Context Construction
      ↓
-Hardware Awareness (STEP 11)
+Hardware-Aware Adaptation
      ↓
-Safe Execution (STEP 10)
+Safe Execution Sandbox
      ↓
 Core Module Execution (peachbot-core)
      ↓
 Memory Update (State + Priority + Decay)
      ↓
-Federation (FILA - STEP 12)
+Federation (FILA - Metadata Exchange)
      ↓
 Adaptive Graph Routing
 ```
@@ -52,45 +64,37 @@ Adaptive Graph Routing
 ## Key Components
 
 ### 🔹 Runtime Engine
-
 * Adaptive graph execution
 * Conditional branching
 * Deterministic processing pipeline
 
 ### 🔹 SBC Engine (Synthetic Biological Computation)
-
 * Feedback loops
 * Memory-driven behavior
 * State-aware execution
 
 ### 🔹 Memory Intelligence Layer
-
 * Weighted memory (priority-based)
 * Reinforcement & decay
 * Selective retention
 
 ### 🔹 Signal & Context Layer
-
 * Signal classification (normal / anomaly / critical)
 * Context-aware execution
 
 ### 🔹 Safety Layer
-
 * Fault isolation
 * Timeout handling
 * Deterministic fallback
 
 ### 🔹 Hardware Awareness Layer
-
 * CPU & memory profiling
 * Adaptive execution modes:
-
   * `performance`
   * `balanced`
   * `safe`
 
 ### 🔹 FILA (Federated Intelligence Layer Adapter)
-
 * Metadata-only communication
 * No raw data transfer
 * Distributed awareness across nodes
@@ -119,28 +123,35 @@ configs/
   config.yaml       # All tunable parameters
 
 tests/              # Full system validation
+docs/               # Full Documentation
 ```
+
+---
+
+## Prerequisites
+
+* **Python 3.10+**
+* Linux / macOS (Windows supported via WSL2)
+* Minimum 1GB RAM (for `balanced` execution mode)
 
 ---
 
 ## Installation
 
 ### 1. Clone Repository
-
 ```bash
-git clone https://github.com/<your-org>/peachbot-edge.git
+git clone [https://github.com/peachbotAI/peachbot-edge.git](https://github.com/peachbotAI/peachbot-edge.git)
 cd peachbot-edge
 ```
 
 ### 2. Create Virtual Environment
-
 ```bash
-python -m venv .venv
-source .venv/Scripts/activate   # Windows
+python3 -m venv .venv
+source .venv/bin/activate   # Linux/macOS
+# .venv\Scripts\activate    # Windows
 ```
 
 ### 3. Install Dependencies
-
 ```bash
 pip install -r requirements.txt
 ```
@@ -154,11 +165,35 @@ python -m src.main
 ```
 
 You will see:
-
 * Boot banner
 * System configuration
 * Execution logs
 * Adaptive graph execution
+
+---
+
+## Quick Start: Triggering an Execution
+
+Once the system is running, you can simulate an incoming biological or environmental signal by dispatching a payload to the runtime:
+
+```python
+# example_dispatch.py
+from src.runtime.graph.executor import GraphExecutor
+from src.contracts.payload import SignalPayload
+
+executor = GraphExecutor()
+
+# Construct a test signal
+signal = SignalPayload(
+    source="medai_sensor_01",
+    data={"heart_rate": 120, "spo2": 94},
+    priority=1.5
+)
+
+# Dispatch and observe deterministic routing
+result = executor.dispatch(signal)
+print(f"Final State: {result.state}")
+```
 
 ---
 
@@ -169,7 +204,6 @@ pytest -v
 ```
 
 Expected:
-
 ```
 ALL TESTS PASSED
 ```
@@ -178,12 +212,11 @@ ALL TESTS PASSED
 
 ## Configuration
 
-All behavioral tuning is externalized:
+All behavioral tuning is externalized. No hardcoded tuning parameters exist in the runtime logic.
 
 📁 `configs/config.yaml`
 
 Example:
-
 ```yaml
 runtime:
   timeout: 2
@@ -203,8 +236,6 @@ priority:
     complexity: 0.5
 ```
 
-> No hardcoded tuning parameters exist in runtime logic.
-
 ---
 
 ## Integration with `peachbot-core`
@@ -218,36 +249,10 @@ core_executor.execute(module_name="medai", data=payload)
 * Modular plug-in system
 * No tight coupling
 * Supports multi-domain intelligence:
-
   * MedAI
   * Eco
   * AgriAI
   * Bio
-
----
-
-## Privacy & Safety
-
-* No cloud dependency for execution
-* No raw data sharing (FILA is metadata-only)
-* No generative models or hallucinations
-* Deterministic outputs
-* Local-first processing
-
----
-
-## Execution Flow Example
-
-```text
-Node: start
-→ signal_type: normal
-→ memory_seen: False
-
-Node: branch_b
-→ signal_type: normal
-→ memory_seen: True
-→ federated_seen: True
-```
 
 ---
 
@@ -258,32 +263,16 @@ Node: branch_b
 * Not a diagnostic engine
 
 It is:
-
 > **Edge-native deterministic intelligence infrastructure for scientific systems**
-
----
-
-## Limitations (v1)
-
-* No distributed networking (FILA is local simulation)
-* No dynamic graph mutation
-* No domain-specific optimization (yet)
 
 ---
 
 ## Roadmap (High-Level)
 
 * Hardware-level scheduling optimization
-* Real federated node communication
+* Real federated node communication via FILA
 * Domain-specific intelligence modules
 * Self-evolving execution graphs
-
----
-
-## Author
-
-**Swapin Vidya**
-PeachBot Research & Innovation Lab
 
 ---
 
@@ -297,7 +286,7 @@ If you use PeachBot Edge in research or production, please cite:
   title = {PeachBot Edge: Edge-Native Deterministic Intelligence Engine},
   year = {2026},
   version = {0.1.0},
-  url = {https://github.com/<your-org>/peachbot-edge}
+  url = {[https://github.com/peachbotAI/peachbot-edge](https://github.com/peachbotAI/peachbot-edge)}
 }
 ```
 
@@ -308,13 +297,11 @@ If you use PeachBot Edge in research or production, please cite:
 This project is licensed under the **Apache License, Version 2.0**.
 
 You are free to:
-
 * Use the software commercially
 * Modify and distribute it
 * Integrate it into proprietary systems
 
 Under the following conditions:
-
 * Include a copy of the license (`LICENSE`)
 * Provide proper attribution
 * State any significant changes made
@@ -328,56 +315,21 @@ For full terms, see the `LICENSE` file.
 Contributions are welcome and must follow the guidelines defined in `CONTRIBUTING.md`.
 
 By contributing, you agree that:
-
 * Your contributions will be licensed under **Apache License 2.0**
 * You adhere to system principles:
-
   * Deterministic execution
   * Privacy-preserving design
   * Config-driven behavior (no hardcoding)
 
-Before submitting:
-
+Before submitting a PR, ensure all tests pass:
 ```bash
 pytest -v
 ```
-
-All tests must pass.
 
 ---
 
 ## Disclaimer
 
-PeachBot Edge is **not a medical device, diagnostic tool, or clinical decision system**.
+PeachBot Edge is **not a medical device, diagnostic tool, or clinical decision system**. 
 
-* Does NOT provide diagnosis
-* Does NOT replace medical professionals
-* Does NOT guarantee clinical outcomes
-
-It is:
-
-> A **deterministic, edge-native computational infrastructure** for scientific and biological signal processing.
-
-All outputs should be interpreted as:
-
-* computational signals
-* system-level alerts
-* research or engineering insights
-
-Use in real-world environments is the responsibility of the deploying entity.
-
----
-
-
-## Final Note
-
-PeachBot Edge is designed as **deep-tech infrastructure**, not an application layer.
-
-It enables:
-
-* scientific computation at the edge
-* privacy-preserving intelligence
-* deterministic decision support systems
-
----
-
+All outputs should be interpreted as computational signals, system-level alerts, or research insights. Use in real-world environments is the responsibility of the deploying entity. See `docs/disclaimers.md` for full details.

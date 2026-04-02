@@ -1,11 +1,12 @@
 import platform
+from src.version import VERSION
 
 try:
     import psutil
 except ImportError:
     psutil = None
 
-VERSION = "0.1.0-edge"
+# VERSION = "0.1.0-edge"
 
 
 def get_system_info():

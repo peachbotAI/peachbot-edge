@@ -33,9 +33,9 @@ keywords:
 
 license: Apache-2.0
 
-repository-code: "https://github.com/<your-org>/peachbot-edge"
+repository-code: "https://github.com/peachbotAI/peachbot-edge"
 
-url: "https://github.com/<your-org>/peachbot-edge"
+url: "https://github.com/peachbotAI/peachbot-edge"
 
 preferred-citation:
   type: software
@@ -45,4 +45,4 @@ preferred-citation:
   title: "PeachBot Edge: Edge-Native Deterministic Intelligence Engine"
   version: "0.1.0"
   year: 2026
-  url: "https://github.com/<your-org>/peachbot-edge"
+  url: "https://github.com/peachbotAI/peachbot-edge"
