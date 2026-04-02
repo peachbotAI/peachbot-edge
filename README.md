@@ -1,5 +1,12 @@
 # PeachBot Edge
 
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/peachbotAI/peachbot-edge/releases)
+[![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Tests](https://img.shields.io/badge/pytest-passing-brightgreen.svg)](https://github.com/peachbotAI/peachbot-edge/actions)
+[![Architecture](https://img.shields.io/badge/architecture-Edge__Native-orange.svg)](#)
+[![Execution](https://img.shields.io/badge/execution-Deterministic-purple.svg)](#)
+
 ### Edge-Native Execution Layer for Deterministic Biological Intelligence
 
 ---
