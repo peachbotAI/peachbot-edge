@@ -1,0 +1,19 @@
+runtime:
+  mode: edge
+  debug: false
+  timeout: 2
+
+memory:
+  decay:
+    weak: 0.9
+    strong: 0.95
+
+  threshold:
+    removal: 0.3
+
+priority:
+  base: 1.0
+  weights:
+    anomaly: 2.0
+    memory_seen: 1.0
+    complexity: 0.5

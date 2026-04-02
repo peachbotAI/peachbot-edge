@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+
+title: "PeachBot Edge: Edge-Native Deterministic Intelligence Engine"
+
+message: "If you use this software, please cite it as below."
+
+type: software
+
+authors:
+  - family-names: Vidya
+    given-names: Swapin
+
+version: "0.1.0"
+
+date-released: 2026-04-02
+
+abstract: >
+  PeachBot Edge is a deterministic, edge-native execution engine designed
+  for biological, clinical, and scientific intelligence systems. It enables
+  stateful computation, adaptive graph execution, and privacy-preserving
+  federated coordination without reliance on cloud infrastructure or large
+  language models. The system integrates synthetic biological computation (SBC),
+  memory intelligence, hardware-aware execution, and metadata-only federation.
+
+keywords:
+  - edge computing
+  - deterministic AI
+  - graph execution
+  - biological computation
+  - federated systems
+  - SBC
+  - edge intelligence
+
+license: Apache-2.0
+
+repository-code: "https://github.com/<your-org>/peachbot-edge"
+
+url: "https://github.com/<your-org>/peachbot-edge"
+
+preferred-citation:
+  type: software
+  authors:
+    - family-names: Vidya
+      given-names: Swapin
+  title: "PeachBot Edge: Edge-Native Deterministic Intelligence Engine"
+  version: "0.1.0"
+  year: 2026
+  url: "https://github.com/<your-org>/peachbot-edge"
