@@ -31,7 +31,10 @@ For deep dives into system mechanics, underlying theory, and deployment constrai
 * [Disclaimers](docs/disclaimers.md) — Crucial legal, medical, and operational boundaries.
 
 ---
-
+## 🚀 Quick Start
+```bash
+python -m src.main
+```
 ## Core Principles
 
 * **Edge-First** — All core computation runs locally
